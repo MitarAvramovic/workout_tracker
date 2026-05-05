@@ -1,0 +1,18 @@
+================================================================================================================================
+1. CSRF (uzmi token)
+curl -i http://127.0.0.1:8000/api/accounts/csrf/
+
+2. LOGIN
+curl -i -X POST http://127.0.0.1:8000/api/accounts/login/ -H "Content-Type: application/json" -H "X-CSRFToken: CSRF_TOKEN" -H "Cookie: csrftoken=CSRF_TOKEN" -d "{\"username\":\"mita\",\"password\":\"123456\"}"
+
+3. ME
+curl http://127.0.0.1:8000/api/accounts/me/ -H "Cookie: sessionid=SESSION_ID; csrftoken=CSRF_TOKEN"
+
+4. LOGOUT
+curl -X POST http://127.0.0.1:8000/api/accounts/logout/ -H "X-CSRFToken: CSRF_TOKEN" -H "Cookie: sessionid=SESSION_ID; csrftoken=CSRF_TOKEN"
+================================================================================================================================
+
+
+@transaction.atomic  ---   [sve ili nista]
+
+select_for_update()   ---   [zakljucaj record u bazi dok se metoda ne zavrsi]
