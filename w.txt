@@ -10,9 +10,41 @@ curl http://127.0.0.1:8000/api/accounts/me/ -H "Cookie: sessionid=SESSION_ID; cs
 
 4. LOGOUT
 curl -X POST http://127.0.0.1:8000/api/accounts/logout/ -H "X-CSRFToken: CSRF_TOKEN" -H "Cookie: sessionid=SESSION_ID; csrftoken=CSRF_TOKEN"
+
+5. curl http://127.0.0.1:8000/api/workouts/ -H "Cookie: sessionid=XYZ456"
+
+6. curl -X POST http://127.0.0.1:8000/api/workouts/ -H "Content-Type: application/json" -H "X-CSRFToken: ABC123" -H "Cookie: sessionid=XYZ456; csrftoken=ABC123" -d "{}"
+
+7. curl http://127.0.0.1:8000/api/workouts/1/ -H "Cookie: sessionid=XYZ456"
+
+8. curl -X DELETE http://127.0.0.1:8000/api/workouts/1/ -H "X-CSRFToken: ABC123" -H "Cookie: sessionid=XYZ456; csrftoken=ABC123"
+
+8. curl -X PATCH http://127.0.0.1:8000/api/workouts/sets/1/ -H "Content-Type: application/json" -H "X-CSRFToken: ABC123" -H "Cookie: sessionid=XYZ456; csrftoken=ABC123" -d "{\"reps\":12}"
 ================================================================================================================================
 
 
 @transaction.atomic  ---   [sve ili nista]
 
 select_for_update()   ---   [zakljucaj record u bazi dok se metoda ne zavrsi]
+
+axios --- [na frontu lepse od fetcha]
+
+
+Exercise.objects.bulk_create([
+    Exercise(name="Bench Press"),
+    Exercise(name="Squat"),
+    Exercise(name="Deadlift"),
+])
+
+
+                                POSTGRESQL
+================================================================================================================================
+1.-U postgres
+
+2.\c mitar
+
+3. \dt
+
+4. select * from [name]
+================================================================================================================================
+
