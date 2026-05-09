@@ -1,0 +1,50 @@
+.workouts-page {
+    max-width: 900px;
+
+    margin: 40px auto;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+.workout-card {
+    border: 1px solid #ddd;
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+.workout-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.exercise-section {
+    border-top: 1px solid #eee;
+
+    padding-top: 10px;
+}
+
+.sets-container {
+    display: flex;
+    gap: 10px;
+
+    flex-wrap: wrap;
+}
+
+.set-box {
+    padding: 8px 14px;
+
+    background: #f4f4f4;
+
+    border-radius: 8px;
+}

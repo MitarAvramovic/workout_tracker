@@ -1,0 +1,25 @@
+.auth-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.auth-box input {
+    padding: 10px;
+    width: 250px;
+}
+
+.auth-box button {
+    padding: 10px;
+    cursor: pointer;
+}

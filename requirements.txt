@@ -1,5 +1,10 @@
 asgiref==3.11.1
 django==6.0.4
+django-cors-headers==4.9.0
+django-environ==0.13.0
 djangorestframework==3.17.1
+pip==25.3
+psycopg2-binary==2.9.12
+ruff==0.15.12
 sqlparse==0.5.5
 tzdata==2026.2

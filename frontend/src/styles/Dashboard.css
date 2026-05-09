@@ -1,0 +1,54 @@
+.dashboard {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+/* HEADER */
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 25px;
+    border-bottom: 1px solid #ddd;
+    align-items: center;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.header-right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.dropdown {
+    padding: 6px;
+}
+
+.logout-btn {
+    padding: 6px 12px;
+    background: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* CENTER */
+.center {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.cta-btn {
+    margin-top: 20px;
+    padding: 12px 24px;
+    background: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}

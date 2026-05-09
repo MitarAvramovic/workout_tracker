@@ -1,0 +1,145 @@
+/* ─── HEADER ─────────────────────────────────────────────── */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 32px;
+    height: 64px;
+    background: #16a34a;
+    box-shadow: 0 2px 12px rgba(22, 163, 74, 0.3);
+}
+
+/* ─── LOGO / USERNAME ────────────────────────────────────── */
+.header-logo {
+    font-size: 17px;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: opacity 0.2s;
+}
+
+.header-logo:hover {
+    opacity: 0.85;
+}
+
+/* ─── RIGHT SIDE ─────────────────────────────────────────── */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ─── DROPDOWN WRAPPER ───────────────────────────────────── */
+.dropdown-wrapper {
+    position: relative;
+}
+
+/* ─── DROPDOWN TRIGGER BUTTON ────────────────────────────── */
+.dropdown-trigger {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.dropdown-trigger:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* ─── ARROW ROTATION ─────────────────────────────────────── */
+.dropdown-arrow {
+    font-size: 13px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.dropdown-arrow.open {
+    transform: rotate(180deg);
+}
+
+/* ─── DROPDOWN MENU ──────────────────────────────────────── */
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 180px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+
+    /* Animacija zatvoreno */
+    opacity: 0;
+    transform: translateY(-8px) scaleY(0.96);
+    transform-origin: top right;
+    pointer-events: none;
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+/* Animacija otvoreno */
+.dropdown-menu.dropdown-open {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+    pointer-events: all;
+}
+
+/* ─── DROPDOWN ITEM ──────────────────────────────────────── */
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 12px 18px;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1f2937;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.dropdown-item:hover {
+    background: #f0fdf4;
+    color: #16a34a;
+}
+
+.dropdown-item + .dropdown-item {
+    border-top: 1px solid #f3f4f6;
+}
+
+/* ─── LOGOUT BUTTON ──────────────────────────────────────── */
+.logout-btn {
+    padding: 8px 18px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.logout-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}

@@ -1,0 +1,66 @@
+.create-workout-container {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 50px;
+}
+
+.create-workout-form {
+    width: 400px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+
+    padding: 30px;
+
+    border: 1px solid #ddd;
+    border-radius: 12px;
+}
+
+.create-workout-form h1 {
+    text-align: center;
+}
+
+.create-workout-form input {
+    padding: 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.create-workout-form button {
+    padding: 12px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: black;
+    color: white;
+
+    cursor: pointer;
+}
+
+.created-at {
+    color: gray;
+    font-size: 14px;
+}
+
+.exercise-box {
+    border: 1px solid #ddd;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.set-row {
+    display: flex;
+    gap: 10px;
+}

@@ -1,12 +1,19 @@
 # workouts/urls.py
 
-from django.urls import path
+from django.urls import include, path
+from rest_framework.routers import DefaultRouter
 
-from .views import WorkoutListView, WorkoutDetailView, SetUpdateView
+from .views import WorkoutViewSet
+
+
+router = DefaultRouter()
+
+router.register(
+    "",
+    WorkoutViewSet,
+    basename="workouts",
+)
 
 urlpatterns = [
-    path("", WorkoutListView.as_view(), name="workout-list-create"),
-    path("<int:pk>/", WorkoutDetailView.as_view(), name="workout-detail"),
-    # SETS
-    path("sets/<int:pk>/", SetUpdateView.as_view(), name="set-update"),
+    path("", include(router.urls)),
 ]

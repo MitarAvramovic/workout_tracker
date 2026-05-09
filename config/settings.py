@@ -2,6 +2,8 @@
 
 from pathlib import Path
 
+import os
+
 import environ
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -14,7 +16,7 @@ AUTH_USER_MODEL = "accounts.User"
 SECRET_KEY = "django-insecure-iz@^$0&x_5^r2s^_6x0bsk5_^q%kp6einfd)r*)yqn4%u5a5*x"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -25,12 +27,14 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "corsheaders",
     "rest_framework",
     "accounts",
     "workouts",
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -109,4 +113,18 @@ REST_FRAMEWORK = {
     ],
 }
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
 STATIC_URL = "static/"
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:5173",
+]
