@@ -1,12 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { api } from "../api/api";
+
+import { toast } from "react-toastify";
+
+import "../styles/Register.css";
 
 export default function Register() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [show, setShow] = useState(false);
-
+    const navigate = useNavigate();
     const handleRegister = async (e) => {
         e.preventDefault();
 
@@ -19,15 +24,19 @@ export default function Register() {
             });
 
             console.log("Registered:", res.data);
-            alert("User created!");
+            toast.success("Account created!");
+            navigate("/login");
         } catch (err) {
             console.log(err.response?.data);
-            alert("Error registring user");
+            toast.error("Something went wrong!");
+
+
         }
     };
 
     return (
-        <form onSubmit={handleRegister}>
+    <div className="register-page">
+        <form className="register-form" onSubmit={handleRegister}>
             <h2> Register </h2>
 
             <input
@@ -48,6 +57,7 @@ export default function Register() {
                 Already have an account? <Link to="/login"> Login </Link>
             </p>
         </form>
+    </div>
     );
 
 }

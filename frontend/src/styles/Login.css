@@ -1,25 +1,136 @@
-.auth-container {
-    height: 100vh;
+body {
+    margin: 0;
+    font-family: "Saira", sans-serif;
+    background: #898A8D;
+}
+
+/* CENTER PAGE */
+.login-page {
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.auth-box {
+/* CARD */
+.login-form {
+    width: 350px;
+
+    background: #0F5E6C;
+    padding: 30px;
+
+    border-radius: 14px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 30px;
+    gap: 15px;
+}
+
+/* TITLE */
+.login-form h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #EDFF67;
+}
+
+/* INPUTS */
+.login-form input {
+    padding: 12px;
     border: 1px solid #ddd;
-    border-radius: 10px;
+    border-radius: 12px;
+
+    outline: none;
+    transition: 0.2s;
 }
 
-.auth-box input {
-    padding: 10px;
-    width: 250px;
+.login-form input:focus {
+    border-color: grey;
+    box-shadow: 0 0 0 2px blueviolet;
 }
 
-.auth-box button {
-    padding: 10px;
+/* BUTTONS */
+.login-form button {
+    padding: 12px;
+
+    border: none;
+    border-radius: 12px;
+
     cursor: pointer;
+
+    font-weight: 700;
+
+    transition: 0.2s;
+}
+
+/* LOGIN BUTTON */
+.login-form button[type="submit"] {
+    background: #D2EE00;
+    color: black;
+}
+
+.login-form button[type="submit"]:hover {
+    background: #E6FF2B;
+}
+
+/* SHOW BUTTON */
+.login-form button[type="button"] {
+    background: #eee;
+}
+
+.login-form button[type="button"]:hover {
+    background: #ddd;
+}
+
+/* LINK TEXT */
+.login-form p {
+    text-align: center;
+    font-size: 14px;
+}
+
+.login-form a {
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.login-form a:hover {
+    text-decoration: underline;
+}
+
+/* ─── TABLET ───────────────────────── */
+@media (max-width: 768px) {
+    .login-form {
+        width: 320px;
+        padding: 24px;
+    }
+}
+
+/* ─── MOBILE ───────────────────────── */
+@media (max-width: 480px) {
+    .login-page {
+        padding: 20px;
+    }
+
+    .login-form {
+        width: 100%;
+        max-width: 320px;
+        padding: 20px;
+        border-radius: 12px;
+    }
+
+    .login-form h2 {
+        font-size: 20px;
+    }
+
+    .login-form input {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .login-form button {
+        padding: 10px;
+        font-size: 14px;
+    }
 }

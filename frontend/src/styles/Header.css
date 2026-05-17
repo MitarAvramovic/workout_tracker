@@ -4,23 +4,25 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 32px;
-    height: 64px;
-    background: #16a34a;
-    box-shadow: 0 2px 12px rgba(22, 163, 74, 0.3);
+    height: 100px;
+    background: #0F5E6C;
+    box-shadow: 0 2px 12px #E6FF2B;
 }
 
 /* ─── LOGO / USERNAME ────────────────────────────────────── */
 .header-logo {
-    font-size: 17px;
-    font-weight: 700;
-    color: #ffffff;
+    font-size: 26px;
+    font-weight: 400;
+    color: #E6FF2B;
     text-decoration: none;
     letter-spacing: 0.5px;
     transition: opacity 0.2s;
+    font-family: "Saira", sans-serif;
+    font-style: italic;
 }
 
 .header-logo:hover {
-    opacity: 0.85;
+    opacity: 0.65;
 }
 
 /* ─── RIGHT SIDE ─────────────────────────────────────────── */
@@ -123,7 +125,7 @@
 /* ─── LOGOUT BUTTON ──────────────────────────────────────── */
 .logout-btn {
     padding: 8px 18px;
-    background: rgba(255, 255, 255, 0.12);
+    background: none;
     color: #ffffff;
     border: 1.5px solid rgba(255, 255, 255, 0.35);
     border-radius: 8px;
@@ -142,4 +144,37 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+/* ─── TABLET ───────────────────────── */
+@media (max-width: 768px) {
+    .header {
+        padding: 0 16px;
+        height: 80px;
+    }
+
+    .header-logo {
+        font-size: 20px;
+    }
+}
+
+/* ─── MOBILE ───────────────────────── */
+@media (max-width: 480px) {
+    .header {
+        flex-direction: column;
+        height: auto;
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .header-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .dropdown-trigger,
+    .logout-btn {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
 }

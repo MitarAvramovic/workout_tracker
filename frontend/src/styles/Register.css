@@ -1,25 +1,135 @@
-.auth-container {
-    height: 100vh;
+.body {
+    margin: 0;
+    font-family: "Saira", sans-serif;
+    background: #898A8D;
+}
+
+.register-page {
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.auth-box {
+.register-form {
+    width: 350px;
+
+    background: #0F5E6C;
+    padding: 30px;
+
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 30px;
+    gap: 15px;
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.register-form:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+.register-form h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #EDFF67;
+}
+
+.register-form input {
+    padding: 12px;
     border: 1px solid #ddd;
-    border-radius: 10px;
+    border-radius: 12px;
+
+    outline: none;
+    transition: 0.2s;
 }
 
-.auth-box input {
-    padding: 10px;
-    width: 250px;
+.register-form input:focus {
+    border-color: grey;
+    box-shadow: 0 0 0 2px blueviolet;
 }
 
-.auth-box button {
-    padding: 10px;
+.register-form button {
+    padding: 12px;
+
+    border: none;
+    border-radius: 12px;
+
     cursor: pointer;
+
+    font-weight: 700;
+
+    transition: 0.2s ease;
+}
+
+.register-form button[type="submit"] {
+    background: #D2EE00;
+    color: black;
+}
+
+.register-form button[type="submit"]:hover {
+    background: #E6FF2B;
+}
+
+.register-form button[type="button"] {
+    background: #eee;
+}
+
+.register-form button[type="button"]:hover {
+    background: #ddd;
+}
+
+.register-form p {
+    text-align: center;
+    font-size: 14px;
+    color: black;
+}
+
+.register-form a {
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.register-form a:hover {
+    text-decoration: underline;
+}
+
+/* ─── TABLET ───────────────────────── */
+@media (max-width: 768px) {
+    .register-form {
+        width: 320px;
+        padding: 24px;
+    }
+}
+
+/* ─── MOBILE ───────────────────────── */
+@media (max-width: 480px) {
+    .register-page {
+        padding: 20px;
+    }
+
+    .register-form {
+        width: 100%;
+        max-width: 320px;
+        padding: 20px;
+        border-radius: 12px;
+    }
+
+    .register-form h2 {
+        font-size: 20px;
+    }
+
+    .register-form input {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .register-form button {
+        padding: 10px;
+        font-size: 14px;
+    }
 }
