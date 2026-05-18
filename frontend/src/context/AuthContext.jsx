@@ -29,19 +29,14 @@ export function AuthProvider({ children }) {
     };
 
     const login = async (username, password) => {
-
-        await api.post("accounts/login/", {
-            username,
-            password
-        });
-
+        const res = await api.post("accounts/login/", { username, password });
+        localStorage.setItem("authToken", res.data.token);
         await fetchUser();
     };
 
     const logout = async () => {
-
         await api.post("accounts/logout/");
-
+        localStorage.removeItem("authToken");
         setUser(null);
     };
 

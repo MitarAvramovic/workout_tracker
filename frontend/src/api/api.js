@@ -28,11 +28,9 @@ function getCookie(name) {
 }
 
 api.interceptors.request.use((config) => {
-    const csrfToken = getCookie("csrftoken");
-
-    if (csrfToken) {
-        config.headers["X-CSRFToken"] = csrfToken;
+    const token = localStorage.getItem("authToken");
+    if (token) {
+        config.headers["Authorization"] = `Token ${token}`;
     }
-
     return config;
 });

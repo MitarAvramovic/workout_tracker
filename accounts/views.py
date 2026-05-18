@@ -42,13 +42,12 @@ class LoginView(APIView):
         serializer = LoginSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        user = login_user(
-            request=request,
-            username=serializer.validated_data["username"],
-            password=serializer.validated_data["password"],
-        )
+        user, token = login_user(...)
 
-        return Response(UserSerializer(user).data)
+        return Response({
+            "user": UserSerializer(user).data,
+            "token": token
+        })
 
 
 class LogoutView(APIView):
