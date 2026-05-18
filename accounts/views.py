@@ -1,8 +1,7 @@
 # accounts/views.py
 
 from django.utils.decorators import method_decorator
-from django.views.decorators.csrf import ensure_csrf_cookie
-from django.middleware.csrf import get_token
+from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
@@ -19,7 +18,7 @@ class CSRFView(APIView):
     def get(self, request):
         return Response({"detail": "CSRF cookie set"})
 
-
+@method_decorator(csrf_exempt, name="dispatch")
 class RegisterView(APIView):
     permission_classes = [AllowAny]
 
@@ -35,6 +34,7 @@ class RegisterView(APIView):
         return Response(UserSerializer(user).data, status=201)
 
 
+@method_decorator(csrf_exempt, name="dispatch")  # ← dodaj ovo
 class LoginView(APIView):
     permission_classes = [AllowAny]
 
@@ -42,7 +42,11 @@ class LoginView(APIView):
         serializer = LoginSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        user, token = login_user(...)
+        user, token = login_user(
+            request=request,
+            username=serializer.validated_data["username"],
+            password=serializer.validated_data["password"],
+        )
 
         return Response({
             "user": UserSerializer(user).data,

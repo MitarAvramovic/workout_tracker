@@ -128,6 +128,7 @@ CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = env.list(
     "CSRF_TRUSTED_ORIGINS",
     default=[
+        "https://workout-tracker-frontend-5w36.onrender.com",
         "http://localhost:5173",
     ],
 )
