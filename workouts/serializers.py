@@ -22,6 +22,11 @@ class ExerciseSerializer(serializers.ModelSerializer):
 class WorkoutSerializer(serializers.ModelSerializer):
     exercises = ExerciseSerializer(many=True)
 
+    def validate_week(self, value):
+        if value < 1:
+            raise serializers.ValidationError("Week must be at least 1")
+        return value
+
     class Meta:
         model = Workout
         fields = ["id", "week", "day", "exercises"]
