@@ -19,7 +19,7 @@ export default function Dashboard() {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const res = await api.get("accounts/me");
+                const res = await api.get("accounts/me/");
 
                 setUser(res.data);
 

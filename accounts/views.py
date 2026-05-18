@@ -1,5 +1,7 @@
 # accounts/views.py
 
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import ensure_csrf_cookie
 from django.middleware.csrf import get_token
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -10,12 +12,12 @@ from .services import register_user, login_user, logout_user
 from .selectors import get_current_user
 
 
+@method_decorator(ensure_csrf_cookie, name="dispatch")
 class CSRFView(APIView):
     permission_classes = [AllowAny]
-    authentication_classes = []
 
     def get(self, request):
-        return Response({"csrfToken": get_token(request)})
+        return Response({"detail": "CSRF cookie set"})
 
 
 class RegisterView(APIView):
