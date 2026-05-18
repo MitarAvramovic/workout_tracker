@@ -1,17 +1,17 @@
-# workouts/serializers.py
-
 from rest_framework import serializers
 from .models import Workout, Exercise, Set
-from .services import create_full_workout
 
 
 class SetSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(required=False)
+
     class Meta:
         model = Set
         fields = ["id", "reps"]
 
 
 class ExerciseSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(required=False)
     sets = SetSerializer(many=True)
 
     class Meta:
@@ -26,17 +26,4 @@ class WorkoutSerializer(serializers.ModelSerializer):
         model = Workout
         fields = ["id", "week", "day", "exercises"]
 
-    def create(self, validated_data):
-
-        exercises_data = validated_data.pop("exercises", [])
-
-        user = self.context["request"].user
-
-        workout = create_full_workout(
-            user=user,
-            week=validated_data["week"],
-            day=validated_data["day"],
-            exercises_data=exercises_data,
-        )
-
-        return workout
+    # nema create() ni update() — serializer samo validira

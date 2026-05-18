@@ -6,6 +6,8 @@ import { useState } from "react";
 
 import { toast } from "react-toastify";
 
+import { useAuth } from "../context/AuthContext";
+
 
 
 import Loading from "../components/Loading";
@@ -20,8 +22,9 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const [show, setShow] = useState(false);
     const [loading, setLoading] = useState(false);
+    
     const navigate = useNavigate();
-
+    const { login } = useAuth();
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -31,16 +34,8 @@ export default function Login() {
         try{
 
             setLoading(true);
-
-            const res = await api.post("accounts/login/", {
-                username,
-                password,
-            });
-            
-            console.log("Logged in:", res.data);
-            toast.info("Welcome Back!")
-            alert("Logged in!");
-
+            await login(username, password);
+            toast.info("Welcome Back!");
             navigate("/dashboard");
             
         } catch (err) {

@@ -105,7 +105,7 @@ export default function CreateWorkout() {
         } catch (err) {
             toast.error("Something went wrong.");
 
-            console.log(err);
+            console.log(err.response.data);
         } finally {
             setSubmitting(false);
         }
