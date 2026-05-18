@@ -131,6 +131,7 @@ CSRF_TRUSTED_ORIGINS = env.list(
 )
 
 # Cookies (Render production fix)
+CSRF_COOKIE_HTTPONLY = False
 SESSION_COOKIE_SAMESITE = "None"
 SESSION_COOKIE_SECURE = True
 
