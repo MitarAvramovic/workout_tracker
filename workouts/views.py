@@ -4,11 +4,12 @@ from rest_framework.permissions import IsAuthenticated
 from .serializers import WorkoutSerializer
 from .selectors import get_user_workouts
 from .services import create_full_workout, update_full_workout
+from .permissions import IsWorkoutOwner
 
 
 class WorkoutViewSet(ModelViewSet):
     serializer_class = WorkoutSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsWorkoutOwner]
 
     def get_queryset(self):
         params = self.request.query_params

@@ -29,8 +29,6 @@ def create_full_workout(*, user, week, day, exercises_data):
 def update_full_workout(*, workout_id, user, week, day, exercises_data):
     workout = get_object_or_404(Workout, id=workout_id)
 
-    if workout.user != user:
-        raise ValidationError("You cannot edit this workout")
 
     workout.week = week
     workout.day = day
@@ -67,13 +65,10 @@ def update_full_workout(*, workout_id, user, week, day, exercises_data):
     return workout
 
 
-def delete_workout(*, workout_id, user):
-    workout = get_object_or_404(Workout, id=workout_id)
+# def delete_workout(*, workout_id, user):
+#     workout = get_object_or_404(Workout, id=workout_id)
 
-    if workout.user != user:
-        raise ValidationError("You cannot delete this workout")
-
-    workout.delete()
+#     workout.delete()
 
 
 def create_exercise(*, workout, name_of_exercise):

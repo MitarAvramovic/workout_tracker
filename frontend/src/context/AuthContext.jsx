@@ -16,7 +16,7 @@ export function AuthProvider({ children }) {
 
             const res = await api.get("accounts/me/");
 
-            setUser(res.data);
+            setUser(res.data.data);
 
         } catch(err) {
 
@@ -30,7 +30,7 @@ export function AuthProvider({ children }) {
 
     const login = async (username, password) => {
         const res = await api.post("accounts/login/", { username, password });
-        localStorage.setItem("authToken", res.data.token);
+        localStorage.setItem("authToken", res.data.data.token);
         await fetchUser();
     };
 

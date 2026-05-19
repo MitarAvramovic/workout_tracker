@@ -9,6 +9,7 @@ from rest_framework.response import Response
 from .serializers import RegisterSerializer, LoginSerializer, UserSerializer
 from .services import register_user, login_user, logout_user
 from .selectors import get_current_user
+from config.responses import success_response
 
 
 @method_decorator(ensure_csrf_cookie, name="dispatch")
@@ -16,7 +17,7 @@ class CSRFView(APIView):
     permission_classes = [AllowAny]
 
     def get(self, request):
-        return Response({"detail": "CSRF cookie set"})
+        return success_response(message="CSRF cookie set")
 
 @method_decorator(csrf_exempt, name="dispatch")
 class RegisterView(APIView):
@@ -31,7 +32,10 @@ class RegisterView(APIView):
             password=serializer.validated_data["password"],
         )
 
-        return Response(UserSerializer(user).data, status=201)
+        return success_response(
+            data=UserSerializer(user).data,
+            message="Registration successful",
+             status=201)
 
 
 @method_decorator(csrf_exempt, name="dispatch")  # ← dodaj ovo
@@ -48,10 +52,13 @@ class LoginView(APIView):
             password=serializer.validated_data["password"],
         )
 
-        return Response({
-            "user": UserSerializer(user).data,
-            "token": token
-        })
+        return success_response(
+            data={
+                "user": UserSerializer(user).data,
+                "token": token
+            },
+            message="Login successful",
+        )
 
 
 class LogoutView(APIView):
@@ -67,4 +74,4 @@ class MeView(APIView):
 
     def get(self, request):
         user = get_current_user(request=request)
-        return Response(UserSerializer(user).data)
+        return success_response(data=UserSerializer(user).data)

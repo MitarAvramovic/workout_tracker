@@ -111,6 +111,7 @@ REST_FRAMEWORK = {
     ],
     "DEFAULT_PAGINATION_CLASS": "workouts.pagination.CustomPagination",
     "PAGE_SIZE": 2,
+    "EXCEPTION_HANDLER": "config.exceptions.custom_exception_handler",
 }
 
 # CORS
