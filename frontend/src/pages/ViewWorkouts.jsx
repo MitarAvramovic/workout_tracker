@@ -210,6 +210,13 @@ export default function ViewWorkouts() {
                                                             setEditData({ ...editData, day: e.target.value })
                                                         }
                                                     />
+
+                                                    <textarea
+                                                        className="input-notes"
+                                                        placeholder="Notes (optional"
+                                                        value={editData.notes}
+                                                        onChange={(e) => setEditData({...editData, notes: e.target.value})}
+                                                    />
                                                 </div>
 
                                                 {editData.exercises.map((exercise, exIndex) => (
@@ -250,6 +257,9 @@ export default function ViewWorkouts() {
                                                 <div className="workout-top">
                                                     <h2>Week {workout.week} - Day {workout.day}</h2>
                                                 </div>
+                                                {workout.notes && (
+                                                    <p className="workout-notes">{workout.notes}</p>
+                                                )}
 
                                                 {workout.exercises.map((exercise) => (
                                                     <div key={exercise.id} className="exercise-section">

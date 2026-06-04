@@ -19,6 +19,7 @@ class CSRFView(APIView):
     def get(self, request):
         return success_response(message="CSRF cookie set")
 
+
 @method_decorator(csrf_exempt, name="dispatch")
 class RegisterView(APIView):
     permission_classes = [AllowAny]
@@ -35,7 +36,8 @@ class RegisterView(APIView):
         return success_response(
             data=UserSerializer(user).data,
             message="Registration successful",
-             status=201)
+            status=201,
+        )
 
 
 @method_decorator(csrf_exempt, name="dispatch")  # ← dodaj ovo
@@ -53,10 +55,7 @@ class LoginView(APIView):
         )
 
         return success_response(
-            data={
-                "user": UserSerializer(user).data,
-                "token": token
-            },
+            data={"user": UserSerializer(user).data, "token": token},
             message="Login successful",
         )
 

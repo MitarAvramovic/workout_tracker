@@ -13,6 +13,8 @@ class Workout(models.Model):
 
     day = models.PositiveIntegerField()
 
+    notes = models.TextField(blank=True, default="")
+
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -23,11 +25,23 @@ class Workout(models.Model):
 
 
 class Exercise(models.Model):
+    class Category(models.TextChoices):
+        PUSH = "push", "Push"
+        PULL = "pull", "Pull"
+        LEGS = "legs", "Legs"
+        CARDIO = "cardio", "Cardio"
+        OTHER = "other", "Other"
+
     workout = models.ForeignKey(
         Workout, on_delete=models.CASCADE, related_name="exercises"
     )
 
     name_of_exercise = models.CharField(max_length=100)
+    category = models.CharField(
+        max_length=10,
+        choices=Category.choices,
+        default=Category.OTHER,
+    )
 
     def __str__(self):
         return self.name_of_exercise

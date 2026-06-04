@@ -65,9 +65,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 # Database
 if env("DATABASE_URL", default=None):
-    DATABASES = {
-        "default": env.db("DATABASE_URL")
-    }
+    DATABASES = {"default": env.db("DATABASE_URL")}
 else:
     DATABASES = {
         "default": {
@@ -144,14 +142,16 @@ CSRF_COOKIE_SECURE = True
 # Static files
 STATIC_URL = "static/"
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-] if os.path.exists(os.path.join(BASE_DIR, "static")) else []
+STATICFILES_DIRS = (
+    [
+        os.path.join(BASE_DIR, "static"),
+    ]
+    if os.path.exists(os.path.join(BASE_DIR, "static"))
+    else []
+)
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-STATICFILES_STORAGE = (
-    "whitenoise.storage.CompressedManifestStaticFilesStorage"
-)
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

@@ -5,15 +5,16 @@ from .models import Workout, Exercise, Set
 
 
 @transaction.atomic
-def create_full_workout(*, user, week, day, exercises_data):
-    print(f"DEBUG: user={user}, week={week}, day={day}")
-    print(
-        f"DEBUG: exists={Workout.objects.filter(user=user, week=week, day=day).exists()}"
-    )
+def create_full_workout(*, user, week, day, notes="", exercises_data):
     if Workout.objects.filter(user=user, week=week, day=day).exists():
         raise ValidationError("Workout already exists")
 
-    workout = Workout.objects.create(user=user, week=week, day=day)
+    workout = Workout.objects.create(
+        user=user,
+        week=week,
+        day=day,
+        notes=notes,
+    )
 
     for exercise_data in exercises_data:
         exercise = create_exercise(
@@ -26,12 +27,12 @@ def create_full_workout(*, user, week, day, exercises_data):
 
 
 @transaction.atomic
-def update_full_workout(*, workout_id, user, week, day, exercises_data):
+def update_full_workout(*, workout_id, week, day, notes="", exercises_data):
     workout = get_object_or_404(Workout, id=workout_id)
-
 
     workout.week = week
     workout.day = day
+    workout.notes = notes
     workout.save()
 
     incoming_exercise_ids = {ex["id"] for ex in exercises_data if ex.get("id")}

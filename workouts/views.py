@@ -27,6 +27,7 @@ class WorkoutViewSet(ModelViewSet):
             user=self.request.user,
             week=serializer.validated_data["week"],
             day=serializer.validated_data["day"],
+            notes=serializer.validated_data.get("notes", ""),
             exercises_data=serializer.validated_data["exercises"],
         )
 
@@ -36,5 +37,6 @@ class WorkoutViewSet(ModelViewSet):
             user=self.request.user,
             week=serializer.validated_data["week"],
             day=serializer.validated_data["day"],
+            notes=serializer.validated_data("notes", ""),
             exercises_data=serializer.validated_data["exercises"],
         )

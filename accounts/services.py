@@ -21,6 +21,5 @@ def login_user(*, request, username, password):
     return user, token.key
 
 
-
 def logout_user(*, request):
     logout(request)
